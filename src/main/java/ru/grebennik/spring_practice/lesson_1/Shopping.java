@@ -1,8 +1,6 @@
 package ru.grebennik.spring_practice.lesson_1;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Shopping {
@@ -25,7 +23,7 @@ public class Shopping {
         String negativeResultBanana = context.getBean("negativeResult", String.class);
 
         negativeResultPear = "Вы пытаетесь положить в холодильник слишком много груш! Он не закроется!\n" +
-                "Попробуйте другое количество.";
+                "Попробуйте другое количество.\n";
         negativeResultBanana = "Вы пытаетесь положить в холодильник слишком много бананов! Он и так занят грушами!\n" +
                 "Попробуйте другое количество фруктов.\n";
 
@@ -44,7 +42,7 @@ public class Shopping {
         } else {
             this.refrigerator.setContainer(pear.getFruitName(), pear.getAmont());
             freeFruitVolume -= pear.getAmont();
-        };
+        }
 
         System.out.println("Введите количество приобретённых бананов: ");
         banana.setAmont(in.nextInt());
@@ -58,7 +56,7 @@ public class Shopping {
         }
         context.close();
         return result;
-    };
+    }
 
 
     public static void start(){
@@ -78,5 +76,5 @@ public class Shopping {
         context.close();
 
         System.out.println("Покупки успешно уложены в холодильник.");
-    };
+    }
 }
