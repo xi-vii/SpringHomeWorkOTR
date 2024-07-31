@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:refrigerator.properties"/>
+
+    <context:annotation-config/>
+
+    <bean name="refrigeratorBean" class="ru.grebennik.spring_practice.lesson_1.Refrigerator">
+        <constructor-arg name="maxFruitVolume" value="${refrigeratorMaxVolume}"/>
+        <constructor-arg name="container">
+            <map>
+                <entry key="pear" value="0"/>
+                <entry key="banana" value="0"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean name="bananaBean" class="ru.grebennik.spring_practice.lesson_1.Banana"/>
+    <bean name="pearBean" class="ru.grebennik.spring_practice.lesson_1.Pear"/>
+
+    <bean name="shoppingBean" class="ru.grebennik.spring_practice.lesson_1.Shopping">
+        <constructor-arg name="refrigerator" ref="refrigeratorBean"/>
+    </bean>
+
+    <!-- Создаём Bean для String просто чтобы где-нибудь использовать scope="prototype"-->
+    <bean name="negativeResult" class="java.lang.String" scope="prototype"/>
+</beans>
