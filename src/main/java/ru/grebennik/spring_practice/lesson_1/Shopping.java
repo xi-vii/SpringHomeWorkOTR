@@ -24,21 +24,30 @@ public class Shopping {
         String negativeResultPear = context.getBean("negativeResult", String.class);
         String negativeResultBanana = context.getBean("negativeResult", String.class);
 
-        negativeResultPear = "Вы пытаетесь положить в холодильник слишком много груш! Он не закроется!";
+        negativeResultPear = "Вы пытаетесь положить в холодильник слишком много груш! Он не закроется!\n" +
+                "Попробуйте другое количество.";
         negativeResultBanana = "Вы пытаетесь положить в холодильник слишком много бананов! Он и так занят грушами!\n" +
                 "Попробуйте другое количество фруктов.\n";
 
         int freeFruitVolume = this.refrigerator.getMaxFruitVolume();    // Объём свободного места для фруктов в холодильнике
         boolean result = true;      // Получилось поместить все фрукты в холодильник или нет
 
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите количество приобретённых груш: ");
+        pear.setAmont(in.nextInt());
+
         // Проверяем, поместятся ли груши в холодильник
         if(pear.getAmont()>freeFruitVolume) {
             System.out.println(negativeResultPear);
             result = false;
+            return result;
         } else {
             this.refrigerator.setContainer(pear.getFruitName(), pear.getAmont());
             freeFruitVolume -= pear.getAmont();
         };
+
+        System.out.println("Введите количество приобретённых бананов: ");
+        banana.setAmont(in.nextInt());
 
         // Проверяем, поместятся ли бананы в холодильник (после размещения груш)
         if(banana.getAmont()>freeFruitVolume) {
@@ -63,13 +72,6 @@ public class Shopping {
 
         // Пока общее кол-во вводимых груш и бананов превышает объём холодильника, цикл повторяется
         while(!result) {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Введите количество приобретённых груш: ");
-            pear.setAmont(in.nextInt());
-
-            System.out.println("Введите количество приобретённых бананов: ");
-            banana.setAmont(in.nextInt());
-
             result = shopping.fillTheRefrigerator(pear, banana);
         }
 
