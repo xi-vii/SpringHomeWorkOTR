@@ -24,7 +24,9 @@
     <bean name="bananaBean" class="ru.grebennik.spring_practice.lesson_1.Banana"/>
     <bean name="pearBean" class="ru.grebennik.spring_practice.lesson_1.Pear"/>
 
-    <bean name="shoppingBean" class="ru.grebennik.spring_practice.lesson_1.Shopping">
+    <bean name="shoppingBean" class="ru.grebennik.spring_practice.lesson_1.Shopping"
+          destroy-method="destroy"
+          init-method="init">
         <constructor-arg name="refrigerator" ref="refrigeratorBean"/>
     </bean>
 
