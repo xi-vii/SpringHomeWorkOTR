@@ -29,6 +29,15 @@
       <artifactId>jakarta.annotation-api</artifactId>
       <version>3.0.0</version>
     </dependency>
+
+    <!--Для работы аннотаций @PostConstruct и @PreDestroy. C jakarta.annotation они почему-то не работают (может, дело в версии Spring)-->
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>javax.annotation-api</artifactId>
+      <version>1.3.2</version>
+
+    </dependency>
+
   </dependencies>
 
 </project>
