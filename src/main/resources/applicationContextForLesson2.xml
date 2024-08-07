@@ -16,4 +16,10 @@
     <bean name="pearBean" class="ru.grebennik.spring_practice.lesson_2.Pear"/>
     <bean name="shoppingBean" class="ru.grebennik.spring_practice.lesson_2.Shopping"/>
 
+    <!-- BeanPostProcessor -->
+    <bean class="ru.grebennik.spring_practice.lesson_2.bpp.CustomBeanPostProcessor"/>
+
+    <!--BeanFactoryPostProcessor -->
+    <bean class="ru.grebennik.spring_practice.lesson_2.bfpp.CustomBeanFactoryPostProcessor"/>
+
 </beans>

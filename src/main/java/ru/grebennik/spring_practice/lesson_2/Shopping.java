@@ -73,7 +73,7 @@ public class Shopping {
 
     @PostConstruct
     public void init() {
-        System.out.println("Приступим к укладке покупок\n");
+        System.out.println("\nПриступим к укладке покупок\n");
     }
 
     @PreDestroy
